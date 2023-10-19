@@ -40,7 +40,6 @@ SELECT department, first_name, salary, AVG(salary) OVER (PARTITION BY department
 FROM employee;
 
 --Library Preferences (City of San Francisco)
-
 /*Find libraries who haven't provided the email address in circulation year 2016 but their notice preference definition is set to email.
 Output the library code.*/
 
@@ -49,4 +48,12 @@ FROM library_usage
 WHERE (circulation_active_year = '2016') AND (provided_email_address = FALSE) AND (notice_preference_definition = 'email')
 GROUP BY home_library_code
 ORDER BY home_library_code;
+
+--Churro Activity Date (City of Los Angeles)
+/*Find the activity date and the pe_description of facilities with the name 'STREET CHURROS' and with a score of less than 95 points.*/
+SELECT activity_date, pe_description 
+FROM los_angeles_restaurant_health_inspections
+WHERE facility_name = 'STREET CHURROS' AND score < 95
+
+
 
