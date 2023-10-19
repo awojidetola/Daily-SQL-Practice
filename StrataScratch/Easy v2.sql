@@ -63,7 +63,6 @@ FROM sf_public_salaries
 WHERE jobtitle = 'CAPTAIN III (POLICE DEPARTMENT)'
 
 --Salary Differences (DropBox, LinkedIn)
-
 /*Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.*/
 
 SELECT(ABS(
@@ -75,4 +74,14 @@ WHERE d.department = 'engineering')-
 JOIN db_dept AS d
 ON e.department_id = d.id
 WHERE d.department = 'marketing')))
+
+--Spotify Ranking List (Spotify)
+/*Find how many times each artist appeared on the Spotify ranking list
+Output the artist name along with the corresponding number of occurrences.
+Order records by the number of occurrences in descending order.*/
+
+SELECT artist, COUNT(*) AS n_occurences
+FROM spotify_worldwide_daily_song_ranking
+GROUP BY artist
+ORDER BY n_occurences DESC;
 
