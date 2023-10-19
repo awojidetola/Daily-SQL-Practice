@@ -38,3 +38,15 @@ Output the department, first name, and salary of employees along with the averag
 
 SELECT department, first_name, salary, AVG(salary) OVER (PARTITION BY department) AS avg
 FROM employee;
+
+--Library Preferences (City of San Francisco)
+
+/*Find libraries who haven't provided the email address in circulation year 2016 but their notice preference definition is set to email.
+Output the library code.*/
+
+SELECT home_library_code 
+FROM library_usage
+WHERE (circulation_active_year = '2016') AND (provided_email_address = FALSE) AND (notice_preference_definition = 'email')
+GROUP BY home_library_code
+ORDER BY home_library_code;
+
