@@ -55,5 +55,24 @@ SELECT activity_date, pe_description
 FROM los_angeles_restaurant_health_inspections
 WHERE facility_name = 'STREET CHURROS' AND score < 95
 
+--Police Base Pay (City of San Francisco)
+/*Find the base pay for Police Captains.*/
 
+SELECT employeename, basepay
+FROM sf_public_salaries
+WHERE jobtitle = 'CAPTAIN III (POLICE DEPARTMENT)'
+
+--Salary Differences (DropBox, LinkedIn)
+
+/*Write a query that calculates the difference between the highest salaries found in the marketing and engineering departments. Output just the absolute difference in salaries.*/
+
+SELECT(ABS(
+(SELECT MAX(e.salary) FROM db_employee AS e
+JOIN db_dept AS d
+ON e.department_id = d.id
+WHERE d.department = 'engineering')- 
+(SELECT MAX(e.salary) FROM db_employee AS e
+JOIN db_dept AS d
+ON e.department_id = d.id
+WHERE d.department = 'marketing')))
 
