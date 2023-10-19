@@ -92,7 +92,7 @@ Output all details related to retrieved records.
 SELECT * FROM lyft_drivers
 WHERE (yearly_salary <= 30000) OR (yearly_salary >= 70000);
 
---finding updated records (Microsoft)
+--Finding updated records (Microsoft)
 /*We have a table with employees and their salaries, however, 
 some of the records are old and contain outdated salary information. 
 Find the current salary of each employee assuming that salaries increase each year. Output their id, first name, last name, department ID, and current salary. 
