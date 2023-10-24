@@ -133,3 +133,11 @@ GROUP BY product_id
 ORDER BY revenue DESC
 LIMIT 5;
 
+--Posts with Hearts (Meta)
+/*Find all posts which were reacted to with a heart. For such posts output all columns from facebook_posts table.*/
+
+SELECT DISTINCT p.post_id, p.poster, p.post_text, p.post_keywords, p.post_date
+FROM facebook_posts AS p
+JOIN facebook_reactions AS r
+ON p.post_id = r.post_id
+WHERE r.reaction = 'heart';
