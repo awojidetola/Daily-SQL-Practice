@@ -102,3 +102,34 @@ SELECT id,first_name, last_name, department_id, MAX(salary) AS max_salary
 FROM ms_employee_salary
 GROUP BY first_name, last_name,department_id,id
 ORDER BY id;
+
+--Popularity of Hack (Meta)
+/*Meta/Facebook has developed a new programing language called Hack.To measure the popularity of Hack they ran a survey with their employees. The survey included data on previous programing familiarity as well as the number of years of experience, age, gender and most importantly satisfaction with Hack. Due to an error location data was not collected, but your supervisor demands a report showing average popularity of Hack by office location. Luckily the user IDs of employees completing the surveys were stored.
+Based on the above, find the average popularity of the Hack per office location.
+Output the location along with the average popularity.*/
+
+Select e.location, AVG(s.popularity) from facebook_hack_survey As s
+Join facebook_employees As e
+On e.id =s.employee_id
+Group by e.location;
+
+--Number of Shipments per Month (Amazon)
+/*Write a query that will calculate the number of shipments per month. The unique key for one shipment is a combination of shipment_id and sub_id. Output the year_month in format YYYY-MM and the number of shipments in that month.*/
+select 
+to_char(shipment_date, 'YYYY-MM') as year_month,
+COUNT(shipment_id+sub_id) as count
+from amazon_shipment
+group by year_month
+order by count desc;
+
+--Most Lucrative Products (Meta)
+/*You have been asked to find the 5 most lucrative products in terms of total revenue for the first half of 2022 (from January to June inclusive).
+Output their IDs and the total revenue.*/
+
+SELECT product_id,  SUM(cost_in_dollars * units_sold) AS revenue
+FROM online_orders
+WHERE date BETWEEN '2022-01-01' AND '2022-06-30'
+GROUP BY product_id
+ORDER BY revenue DESC
+LIMIT 5;
+
