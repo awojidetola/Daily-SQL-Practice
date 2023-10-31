@@ -19,3 +19,12 @@ FROM yelp_reviews
 ORDER BY cool DESC
 LIMIT 2;
 
+--Share of Accounts (Meta)
+
+/*Output share of US users that are active. Active users are the ones with an "open" status in the table.*/
+
+SELECT 
+AVG(
+CASE WHEN status = 'open' THEN 1 ELSE 0 END) AS share
+FROM fb_active_users
+WHERE country = 'USA';
